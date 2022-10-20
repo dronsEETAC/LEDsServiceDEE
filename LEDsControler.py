@@ -3,7 +3,7 @@ import time
 import threading
 
 
-local_broker_address = "127.0.0.1"
+local_broker_address = "localhost"
 local_broker_port = 1883
 LEDSequenceOn = False
 
@@ -45,7 +45,7 @@ def on_message(client, userdata, message):
 
     if command == "LEDsSequenceForNSeconds":
         seconds = int(message.payload.decode("utf-8"))
-        print("LED sequence for " + str(seconds) + "seconds")
+        print("LED sequence for " + str(seconds) + " seconds")
         LEDSequenceOn = True
         w = threading.Thread(target=led_sequence)
         w.start()
