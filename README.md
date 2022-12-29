@@ -20,7 +20,7 @@ where XXX is the name of the module requiring the service and YYY is the name of
 The table bellow indicates all the commands that are accepted by the LEDs service in the current version.   
 
 Command | Description | Payload 
---- | --- | --- | --- |--- 
+--- | --- | --- 
 *startLEDsSequence* | start a clyclic sequence: red, green, yellow | No 
 *stopLEDsSequence* | stops the sequence | No 
 *LEDsSequenceForNSeconds* | runs the cyclic sequience during a certain number of seconds | the number of seconds as string
