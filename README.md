@@ -1,17 +1,42 @@
-# Drone Engineering Ecosystem   
-![software-arch](https://user-images.githubusercontent.com/32190349/155320787-f8549148-3c93-448b-b79a-388623ca5d3f.png)
+# LEDs service  
 
-## Demo   
-[Drone Engineering Ecosystem demo](https://www.youtube.com/playlist?list=PL64O0POFYjHpXyP-T063RdKRJXuhqgaXY) 
+## Introduction
 
-## LEDsController
-The LEDsController module is responsible for the managing of the LEDs of the drone. With this module, we can start a LEDs
-sequence, stop a LEDs sequence or start an N seconds sequence of LEDs.
+The LEDs service is an on-board module that controls the LEDs and the servo installed in the drone platform, as required by the rest of modules in the Drone Engineering Ecosystem.   
+Dashboard or mobile applications will requiere the LEDs service to light certain LED with a given RGB color of to move the servo to drop and object.
 
-## Example and tutorials
+## Operation modes
+Althoug it may not have much sense, the LEDs service can be run in simulation mode. In this case the service just print in console the actions that would do in poduction mode. This can be useful for debug purposes. Clone the repo in your computer and install de requirements. Be also sure that you have running the internal broker at "localhost:1884". To run the service you must edit the run/debug configuration in PyCharm, as shown in the image, in order to pass the required arguments to the script. In the image, the autopilot service in run in global and simulation modes. The same operation must be done with the LEDs service.  
+   
+The run the LEDs service in production mode you will need the boot.py script that you will find in the main repo of the Drone Engineering Ecosystem. Follow the instruction that you will find in that repo.   
 
-The basics of MQTT can be found here:   
-[MQTT](https://www.youtube.com/watch?v=EIxdz-2rhLs)
+## Commands
+In order to send a command to the LEDs service, a module must publish a message in the external (or internal) broker. The topic of the message must be in the form:
+```
+"XXX/LEDsService/YYY"
+```
+where XXX is the name of the module requiring the service and YYY is the name of the service that is required. Oviously, some of the commands include data that must be includes in the payload of the message to be published. 
 
-This is a good example to start using MQTT (using a public broker):    
-[Example](https://www.youtube.com/watch?v=kuyCd53AOtg)
+The table bellow indicates all the commands that are accepted by the LEDs service in the current version.   
+
+Command | Description | Payload 
+--- | --- | --- | --- |--- 
+*startLEDsSequence* | start a clyclic sequence: red, green, yellow | No 
+*stopLEDsSequence* | stops the sequence | No 
+*LEDsSequenceForNSeconds* | runs the cyclic sequience during a certain number of seconds | the number of seconds as string
+*red* | put in red the first led for 5 seconds | No 
+*green* | put in green the second led for 5 seconds | No 
+*blue* | put in lue the third led for 5 seconds | No
+*drop* | move the servo to drop the object | No
+*reset* | move the servo to its initial position | No
+*bluei* | fix the first led to blue | No 
+*redi* | fix the first led to red | No
+*yellowi* | fix the first led to yellow | No 
+*greeni* | fix the first led to green | No
+*pinki* | fix the first led to pink | No 
+*whitei* | fix the first led to white | No
+*blacki* | fix the first led to black | No
+*clear* | clear the first led | No 
+
+
+
