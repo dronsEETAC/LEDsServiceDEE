@@ -105,12 +105,12 @@ def on_message(client, userdata, message):
         if command == 'green':
             pixels[1] = (0, 255, 0)
             time.sleep(5)
-            pixels[0] = (0, 0, 0)
+            pixels[1] = (0, 0, 0)
 
         if command == 'blue':
-            pixels[0] = (0, 0, 255)
+            pixels[2] = (0, 0, 255)
             time.sleep(5)
-            pixels[0] = (0, 0, 0)
+            pixels[2] = (0, 0, 0)
 
         if command == 'drop':
             p.ChangeDutyCycle(7.5)
