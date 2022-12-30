@@ -9,8 +9,6 @@ import RPi.GPIO as GPIO
 
 
 
-local_broker_address = "localhost"
-local_broker_port = 1883
 LEDSequenceOn = False
 
 
@@ -28,7 +26,13 @@ def led_sequence():
             print("YELLOW")
             time.sleep(1)
     else:
-        pass
+        while LEDSequenceOn:
+            pixels[0] = (255, 0, 0)
+            time.sleep(1)
+            pixels[0] = (0, 255, 0)
+            time.sleep(1)
+            pixels[0] = (255, 255, 0)
+            time.sleep(1)
 
 def on_message(client, userdata, message):
     global LEDSequenceOn
