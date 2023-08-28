@@ -11,11 +11,6 @@ Contributions must follow the contribution protocol that you will find in the ma
 [![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-MainRepo-brightgreen.svg)](https://github.com/dronsEETAC/DroneEngineeringEcosystemDEE)
 
 
-## Operation modes
-Althoug it may not have much sense, the LEDs service can be run in simulation mode. In this case the service just print in console the actions that would do in poduction mode. This can be useful for debug purposes. Clone the repo in your computer and install de requirements. Be also sure that you have running the internal broker at "localhost:1884". To run the service you must edit the run/debug configuration in PyCharm in order to pass the required arguments to the script. At least two parameters are required: connection_mode (global or local) and operation_mode (simulation or production). In case of global communication mode, a third parameter is requiered indicating the external broker to be used. In case the external broker requieres credentials, two additional parameters must be includes (username and password).
-
-The run the LEDs service in production mode you will need the boot.py script that you will find in the main repo of the Drone Engineering Ecosystem. Follow the instruction that you will find in that repo.
-[![DroneEngineeringEcosystem Badge](https://img.shields.io/badge/DEE-MainRepo-brightgreen.svg)](https://github.com/dronsEETAC/DroneEngineeringEcosystemDEE)
 
 ## Commands
 In order to send a command to the LEDs service, a module must publish a message in the external (or internal) broker. The topic of the message must be in the form:
